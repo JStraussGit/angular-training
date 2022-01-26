@@ -13,7 +13,11 @@ export class ProductDetailsComponent implements OnInit {
 
   product: Product | undefined;
 
-  ngOnInit(): void {
+  ngOnInit(){
+    const routeParams = this.route.snapshot.paramMap;
+    const productIdFromRoute = Number(routeParams.get('productId'));
+
+    this.product = products.find(product => product.id === productIdFromRoute);
   }
 
 }
